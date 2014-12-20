@@ -1,0 +1,28 @@
+<head>
+  <title>microblog - tutorial para aprender meteor</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h1>
+          microblog - tutorial de meteor
+        </h1>
+        {{> loginButtons}}
+        <form class="new-post">
+          <input type="text" class="form-control" name="text" placeholder="Compartilhe alguma novidade" />
+        </form>
+      </div>
+      <div class="span12">
+        {{#each posts}}
+        {{> post}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</body>
+
+<template name="post">
+<p><strong>{{ username }}</strong> - {{text}}</p>
+</template>
