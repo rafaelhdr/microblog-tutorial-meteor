@@ -24,6 +24,23 @@ Template.body.helpers({
   }
 });
 
+Template.post.helpers({
+  isOwner: function () {
+    if (Meteor.user()) {
+      if (Meteor.user().username == this.username) {
+        return true;
+      }
+    }
+    return false;
+  },
+});
+
+Template.post.events({
+  "click .btn-delete": function (event) {
+    Posts.remove(this._id);
+  }
+});
+
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
 });
