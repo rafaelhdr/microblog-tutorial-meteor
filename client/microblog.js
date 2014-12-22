@@ -1,5 +1,9 @@
 Posts = new Mongo.Collection("posts");
 
+function n(n){
+    return n > 9 ? "" + n: "0" + n;
+}
+
 Template.body.events({
   "submit .new-post": function (event) {
 
@@ -33,11 +37,19 @@ Template.post.helpers({
     }
     return false;
   },
+  pretiffyDate: function(dt) {
+    window.t = dt;
+    var time = n(dt.getDate()) + '/' + n(dt.getMonth()) + '/' + n(dt.getFullYear()) + ' às ';
+    time += n(dt.getHours()) + ':' + n(dt.getMinutes()) + ':' + n(dt.getSeconds());
+    return  time;
+  }
 });
 
 Template.post.events({
   "click .btn-delete": function (event) {
-    Posts.remove(this._id);
+    var confirmed = confirm('Tem certeza que deseja apagar o post?');
+    if (confirmed)
+      Posts.remove(this._id);
   }
 });
 
