@@ -9,12 +9,7 @@ Template.body.events({
 
     var text = event.target.text.value;
 
-    Posts.insert({
-      text: text,
-      owner: Meteor.userId(),
-      username: Meteor.user().username,
-      createdAt: new Date()
-    });
+    Meteor.call("addPost", text);
 
     event.target.text.value = "";
 
@@ -55,7 +50,7 @@ Template.post.events({
   "click .btn-delete": function (event) {
     var confirmed = confirm('Tem certeza que deseja apagar o post?');
     if (confirmed)
-      Posts.remove(this._id);
+      Meteor.call('removePost', this._id);
   }
 });
 
