@@ -20,9 +20,11 @@
         <h1>
           microblog - tutorial de meteor
         </h1>
+        {{#if isLogged}}
         <form class="new-post">
           <input type="text" class="form-control" name="text" placeholder="Compartilhe alguma novidade" />
         </form>
+        {{/if}}
       </div>
       <div class="span12">
         <h2>Posts mais recentes</h2>

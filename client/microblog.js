@@ -25,6 +25,12 @@ Template.body.events({
 Template.body.helpers({
   posts: function () {
     return Posts.find({}, {sort: {createdAt: -1}, limit: 10});
+  },
+  isLogged: function () {
+    if (Meteor.user()) {
+      return true;
+    }
+    return false;
   }
 });
 
