@@ -1,5 +1,7 @@
 Posts = new Mongo.Collection("posts");
 
+Meteor.subscribe("posts");
+
 function n(n){
     return n > 9 ? "" + n: "0" + n;
 }

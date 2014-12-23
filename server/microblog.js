@@ -24,6 +24,6 @@ Meteor.methods({
   }
 });
 
-Meteor.startup(function () {
-  // code to run on server at startup
+Meteor.publish("posts", function () {
+	return Posts.find({}, {sort: {createdAt: -1}, limit: 10});
 });
